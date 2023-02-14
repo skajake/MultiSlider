@@ -29,7 +29,14 @@ extension MultiSlider: UIGestureRecognizerDelegate {
         default:
             break
         }
-        guard draggedThumbIndex >= 0 else { return }
+        guard draggedThumbIndex >= 0 else {
+            panningWithoutThumb = true
+            return
+        }
+        panningWithoutThumb = false
+        guard !panning else {
+            return
+        }
 
         let slideViewLength = slideView.bounds.size(in: orientation)
         var targetPosition = panGesture.location(in: slideView).coordinate(in: orientation)
@@ -97,9 +104,6 @@ extension MultiSlider: UIGestureRecognizerDelegate {
     }
 
     private func closestThumb(point: CGPoint) -> Int {
-        guard !panning else {
-            return -1
-        }
         var closest = -1
         var minimumDistance = CGFloat.greatestFiniteMagnitude
         let pointCoordinate = point.coordinate(in: orientation)

@@ -35,6 +35,7 @@ open class MultiSlider: UIControl {
     @IBInspectable open dynamic var isHapticSnap: Bool = true
     
     public var panning = false
+    public var panningWithoutThumb = false
 
     @IBInspectable open dynamic var thumbCount: Int {
         get {
