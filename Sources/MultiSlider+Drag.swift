@@ -97,6 +97,9 @@ extension MultiSlider: UIGestureRecognizerDelegate {
     }
 
     private func closestThumb(point: CGPoint) -> Int {
+        guard !panning else {
+            return -1
+        }
         var closest = -1
         var minimumDistance = CGFloat.greatestFiniteMagnitude
         let pointCoordinate = point.coordinate(in: orientation)
