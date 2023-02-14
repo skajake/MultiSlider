@@ -34,7 +34,7 @@ open class MultiSlider: UIControl {
     /// generate haptic feedback when hitting snap steps
     @IBInspectable open dynamic var isHapticSnap: Bool = true
     
-    var panning = false
+    public var panning = false
 
     @IBInspectable open dynamic var thumbCount: Int {
         get {
